@@ -19,4 +19,10 @@ postRouter.post(
  * @description Get all the posts created by the user that the request come from. also return the total number of posts created by the user
  */
 postRouter.get("/",authUser, postController.getPostsController)
+
+/**
+ * @route GET /api/posts/:postId [protected]
+ * @description Get a specific post by its ID created by the user that the request come from
+ */
+postRouter.get("/:postId", authUser, postController.getPostController);
 module.exports = postRouter;
