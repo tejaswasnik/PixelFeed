@@ -25,4 +25,15 @@ postRouter.get("/",authUser, postController.getPostsController)
  * @description Get a specific post by its ID created by the user that the request come from
  */
 postRouter.get("/:postId", authUser, postController.getPostController);
+
+/**
+ * @route POST /api/like/:postId [protected]
+ * @description Like a specific post by its ID
+ */
+postRouter.post("/like/:postId", authUser, postController.likePostController);
+/**
+ * @route POST /api/unlike/:postId [protected]
+ * @description Unlike a specific post by its ID
+ */
+postRouter.post("/unlike/:postId", authUser, postController.unlikePostController);
 module.exports = postRouter;

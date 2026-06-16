@@ -4,13 +4,13 @@ const { toFile } = require("@imagekit/nodejs");
 const imagekit = new ImageKit({
   privateKey: process.env.IMAGEKIT_PRIVATE_KEY,
 });
+const likeModel = require("../models/like.model");
 async function createPostController(req, res) {
   const file = await imagekit.files.upload({
     file: await toFile(Buffer.from(req.file.buffer), "file"),
     fileName: "Test",
     folder: "pixelfeed",
   });
-  console.log(file);
   const post = await postModel.create({
     caption: req.body.caption,
     imgURL: file.url,
@@ -57,8 +57,53 @@ async function getPostController(req, res) {
   });
 }
 
+async function likePostController(req, res) {
+  const username = req.user.username;
+  const postId = req.params.postId;
+
+  const post = await postModel.findById(postId);
+  if (!post) {
+    return res.status(404).json({
+      message: "Post not found.",
+    });
+  }
+
+  const like = await likeModel.create({
+    post: postId,
+    username: username,
+  });
+
+  res.status(201).json({
+    message: "Post liked successfully.",
+    like,
+  });
+}
+
+async function unlikePostController(req, res) {
+  const username = req.user.username;
+  const postId = req.params.postId;
+
+  const post = await postModel.findById(postId);
+  if (!post) {
+    return res.status(404).json({
+      message: "Post not Found.",
+    });
+  }
+
+  const unlike = await likeModel.findOneAndDelete({
+    post: postId,
+    username: username,
+  });
+  res.status(200).json({
+    message: "unliked successfully.",
+    unlike,
+  });
+}
+
 module.exports = {
   createPostController,
   getPostsController,
   getPostController,
+  likePostController,
+  unlikePostController,
 };
