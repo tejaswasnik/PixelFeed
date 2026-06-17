@@ -100,7 +100,7 @@ const Register = () => {
         </div>
         <div className="register-right">
           <img
-            src="https://plus.unsplash.com/premium_photo-1710695570399-7d6e3725ba23?q=80&w=687&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
+            src="https://images.unsplash.com/photo-1634127017864-a2f2d934ab72?q=80&w=747&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
             alt="portrait"
           />
         </div>
