@@ -1,0 +1,118 @@
+@import url("https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&display=swap");
+
+.login-page {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 100vh;
+  width: 100%;
+  font-family: "Inter", sans-serif;
+  position: relative;
+  overflow: hidden;
+}
+
+.dither-bg-wrapper {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 0;
+}
+
+
+.box {
+  background-color: rgba(0, 0, 0, 0.804);
+  width: 60%;
+  display: flex;
+  flex-direction: row-reverse;
+  padding: 1rem;
+  gap: 1rem;
+  border-radius: 1rem;
+  position: relative;
+  z-index: 1;
+  .left {
+    background-color: rgba(0, 0, 0, 0.193);
+    width: 50%;
+    border-radius: 1rem;
+    color: white;
+    padding: 1rem;
+    .form-container {
+      padding: 1rem;
+      height: 100%;
+      gap: 1rem;
+      form {
+        height: 100%;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        gap: 1rem;
+
+        h1 {
+          font-size: 1.5rem;
+        }
+
+        .input-field {
+          display: flex;
+          flex-direction: column;
+          gap: 0.25rem;
+          label {
+            font-size: 0.875rem;
+            font-weight: 500;
+          }
+          input {
+            background: linear-gradient(180deg, #ffffff 0%, #f3f4f6 100%);
+            padding: 1rem;
+            border-radius: 1rem;
+            border: none;
+            font-weight: 400;
+          }
+        }
+      }
+    }
+  }
+  .right {
+    background-color: blue;
+    width: 50%;
+    border-radius: 1rem;
+
+    img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      border-radius: 1rem;
+    }
+  }
+}
+
+.auth-btn {
+  border: none;
+  outline: none;
+  cursor: pointer;
+
+  background: linear-gradient(180deg, #ffffff 0%, #f3f4f6 100%);
+
+  color: #0a0a0a;
+  font-size: 15px;
+  font-weight: 600;
+
+  border-radius: 16px;
+
+  box-shadow:
+    0 10px 30px rgba(255, 255, 255, 0.08),
+    inset 0 1px 0 rgba(255, 255, 255, 0.8);
+
+  transition: all 0.3s ease;
+}
+
+.auth-btn:hover {
+  transform: translateY(-2px);
+
+  box-shadow:
+    0 15px 40px rgba(255, 255, 255, 0.15),
+    inset 0 1px 0 rgba(255, 255, 255, 1);
+}
+
+.auth-btn:active {
+  transform: translateY(0);
+}

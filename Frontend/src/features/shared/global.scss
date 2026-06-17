@@ -1,0 +1,23 @@
+* {
+  margin: 0;
+  padding: 0;
+}
+
+html,
+body,
+#root {
+  width: 100%;
+}
+
+html {
+    background-color: #1d1d1d;
+}
+
+button {
+  background-color: white;
+  color: black;
+  border: none;
+  padding: 0.75rem 0.75rem;
+  border-radius: 1rem;
+  cursor: pointer;
+}
