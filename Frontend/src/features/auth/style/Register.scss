@@ -4,8 +4,9 @@
   display: flex;
   align-items: center;
   justify-content: center;
-  height: 100vh;
+  min-height: 100vh;
   width: 100%;
+  padding: 2rem;
   font-family: "Inter", sans-serif;
   position: relative;
   overflow: hidden;
@@ -13,7 +14,8 @@
 
 .register-box {
   background-color: rgba(0, 0, 0, 0.804);
-  width: 60%;
+  width: min(64rem, 60%);
+  max-width: 100%;
   display: flex;
   flex-direction: row;
   padding: 1rem;
@@ -112,6 +114,91 @@
       object-fit: cover;
       border-radius: 1rem;
     }
+  }
+}
+
+@media (max-width: 1024px) {
+  .register-page {
+    padding: 1.25rem;
+  }
+
+  .register-box {
+    width: min(100%, 56rem);
+  }
+}
+
+@media (max-width: 768px) {
+  .register-page {
+    align-items: flex-start;
+    padding: 1rem;
+    overflow-y: auto;
+  }
+
+  .register-box {
+    width: 100%;
+    flex-direction: column;
+    padding: 0.85rem;
+  }
+
+  .register-box .register-left,
+  .register-box .register-right {
+    width: 100%;
+  }
+
+  .register-box .register-right {
+    min-height: 220px;
+    order: -1;
+  }
+
+  .register-box .register-left .form-container {
+    padding: 0.5rem;
+  }
+
+  .register-box .register-left .form-container form .form-row {
+    flex-direction: column;
+  }
+
+  .auth-btn {
+    width: 100%;
+  }
+}
+
+@media (max-width: 480px) {
+  .register-page {
+    padding: 0.75rem;
+  }
+
+  .register-box {
+    gap: 0.75rem;
+    border-radius: 0.875rem;
+  }
+
+  .register-box .register-left,
+  .register-box .register-right {
+    border-radius: 0.875rem;
+  }
+
+  .register-box .register-right {
+    min-height: 180px;
+  }
+
+  .register-box .register-left .form-container form {
+    gap: 0.65rem;
+  }
+
+  .register-box .register-left .form-container form h1 {
+    font-size: 1.35rem;
+  }
+
+  .register-box .register-left .form-container form .input-field input,
+  .register-box .register-left .form-container form .input-field select,
+  .register-box .register-left .form-container form .input-field textarea {
+    width: 100%;
+    padding: 0.75rem 0.9rem;
+  }
+
+  .register-box .register-left .form-container form .input-field input[type="file"] {
+    padding: 0;
   }
 }
 

@@ -34,9 +34,11 @@ async function registerController(req, res) {
 
 async function loginController(req, res) {
   const { username, email, password } = req.body;
-  const user = await userModel.findOne({
-    $or: [{ username }, { email }],
-  }).select("+password");
+  const user = await userModel
+    .findOne({
+      $or: [{ username }, { email }],
+    })
+    .select("+password");
   if (!user) {
     return res.status(404).json({
       message: "User not found. Please register.",
@@ -49,7 +51,10 @@ async function loginController(req, res) {
     });
   }
 
-  const token = await jwt.sign({ id: user._id, username: user.username }, process.env.JWT_SECRET);
+  const token = await jwt.sign(
+    { id: user._id, username: user.username },
+    process.env.JWT_SECRET,
+  );
   res.cookie("token", token);
   res.status(200).json({
     message: "User LoggedIn Successfully.",
@@ -57,7 +62,24 @@ async function loginController(req, res) {
   });
 }
 
+async function getMeController(req, res) {
+  userId = req.user.id;
+  const user = await userModel.findById(userId);
+
+  if(!user) {
+    return res.status(404),json({
+      message: "User does not exist."
+    })
+  }
+
+  res.status(200).json({
+    message: "Data Fetched Successfully.",
+    user
+  })
+}
+
 module.exports = {
   registerController,
   loginController,
+  getMeController,
 };

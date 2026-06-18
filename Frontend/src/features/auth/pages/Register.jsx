@@ -77,9 +77,9 @@ const Register = () => {
               <div className="input-field">
                 <label htmlFor="profilePicture">Profile Picture :</label>
                 <input
-                  type="file"
+                  type="text"
                   id="profilePicture"
-                  accept="image/*"
+                  placeholder="URL to your profile picture"
                 />
               </div>
 

@@ -1,9 +1,24 @@
-import React from "react";
+import React, { useState } from "react";
 import "../style/Login.scss";
 import DitherBG from "../components/DitherBG";
 import "../style/DitherBG.scss";
-
+import { useAuth } from "../hooks/useAuth";
+import { useNavigate } from "react-router";
 const Login = () => {
+  const { handleLogin , loading} = useAuth();
+  const [email, setEmail] = useState("");
+  const [password, setPassword] = useState("");
+  const navigate = useNavigate();
+  const handleSubmit = async (e) => {
+    e.preventDefault();
+    await handleLogin(email, password);
+    console.log("user Logged In");
+    navigate("/");
+  };
+
+  if(loading) {
+    return (<div>Loading...</div>);
+  }
   return (
     <main className="login-page">
       <div className="dither-bg-wrapper">
@@ -21,7 +36,7 @@ const Login = () => {
       <div className="box">
         <div className="left">
           <div className="form-container">
-            <form>
+            <form onSubmit={handleSubmit}>
               <h1>Login</h1>
               <div className="input-field">
                 <label htmlFor="email">Email :</label>
@@ -29,6 +44,9 @@ const Login = () => {
                   type="email"
                   id="email"
                   placeholder="eg. john@example.com"
+                  onInput={(e) => {
+                    setEmail(e.target.value);
+                  }}
                 />
               </div>
               <div className="input-field">
@@ -37,6 +55,9 @@ const Login = () => {
                   type="password"
                   id="password"
                   placeholder="eg. ••••••••"
+                  onInput={(e) => {
+                    setPassword(e.target.value);
+                  }}
                 />
               </div>
               <button type="submit" className="auth-btn">
