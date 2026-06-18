@@ -1,9 +1,41 @@
-import React from "react";
+import React, { useState } from "react";
 import "../style/Register.scss";
 import DitherBG from "../components/DitherBG";
 import "../style/DitherBG.scss";
-
+import { useAuth } from "../hooks/useAuth";
+import { useNavigate } from "react-router";
 const Register = () => {
+  const { handleRegister, loading } = useAuth();
+  const [name, setName] = useState("");
+  const [username, setUsername] = useState("");
+  const [email, setEmail] = useState("");
+  const [gender, setGender] = useState("");
+  const [bio, setBio] = useState("");
+  const [profilePicture, setProfilePicture] = useState("");
+  const [password, setPassword] = useState("");
+  async function handleSubmit(e) {
+    e.preventDefault();
+    console.log({
+      name,
+      username,
+      email,
+      gender,
+      bio,
+      profilePicture,
+      password,
+    });
+    await handleRegister(
+      name,
+      username,
+      email,
+      password,
+      gender,
+      bio,
+      profilePicture,
+    );
+    console.log("user Registered.");
+    navigate("/");
+  }
   return (
     <main className="register-page">
       <div className="dither-bg-wrapper">
@@ -21,7 +53,7 @@ const Register = () => {
       <div className="register-box">
         <div className="register-left">
           <div className="form-container">
-            <form>
+            <form onSubmit={handleSubmit}>
               <h1>Create Account</h1>
 
               <div className="form-row">
@@ -31,6 +63,9 @@ const Register = () => {
                     type="text"
                     id="name"
                     placeholder="eg. John Doe"
+                    onInput={(e) => {
+                      setName(e.target.value);
+                    }}
                   />
                 </div>
                 <div className="input-field">
@@ -39,6 +74,9 @@ const Register = () => {
                     type="text"
                     id="username"
                     placeholder="eg. johndoe123"
+                    onInput={(e) => {
+                      setUsername(e.target.value);
+                    }}
                   />
                 </div>
               </div>
@@ -50,11 +88,19 @@ const Register = () => {
                     type="email"
                     id="email"
                     placeholder="eg. john@example.com"
+                    onInput={(e) => {
+                      setEmail(e.target.value);
+                    }}
                   />
                 </div>
                 <div className="input-field">
                   <label htmlFor="gender">Gender :</label>
-                  <select id="gender">
+                  <select
+                    id="gender"
+                    onChange={(e) => {
+                      setGender(e.target.value);
+                    }}
+                  >
                     <option value="" disabled selected>
                       Select gender
                     </option>
@@ -71,6 +117,9 @@ const Register = () => {
                   id="bio"
                   placeholder="Tell us about yourself..."
                   rows="3"
+                  onInput={(e) => {
+                    setBio(e.target.value);
+                  }}
                 />
               </div>
 
@@ -80,6 +129,9 @@ const Register = () => {
                   type="text"
                   id="profilePicture"
                   placeholder="URL to your profile picture"
+                  onInput={(e) => {
+                    setProfilePicture(e.target.value);
+                  }}
                 />
               </div>
 
@@ -89,6 +141,9 @@ const Register = () => {
                   type="password"
                   id="password"
                   placeholder="eg. ••••••••"
+                  onInput={(e) => {
+                    setPassword(e.target.value);
+                  }}
                 />
               </div>
 
