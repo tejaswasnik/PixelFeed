@@ -18,7 +18,14 @@ postRouter.post(
  * @route GET /api/posts [protected]
  * @description Get all the posts created by the user that the request come from. also return the total number of posts created by the user
  */
-postRouter.get("/",authUser, postController.getPostsController)
+postRouter.get("/", authUser, postController.getPostsController);
+/**
+ * @route GET /api/getfeed [protected]
+ * @description Gets all the posts by all users
+ * @access Private
+ */
+
+postRouter.get("/feed", authUser, postController.getFeedController);
 
 /**
  * @route GET /api/posts/:postId [protected]
@@ -35,5 +42,10 @@ postRouter.post("/like/:postId", authUser, postController.likePostController);
  * @route POST /api/unlike/:postId [protected]
  * @description Unlike a specific post by its ID
  */
-postRouter.post("/unlike/:postId", authUser, postController.unlikePostController);
+postRouter.post(
+  "/unlike/:postId",
+  authUser,
+  postController.unlikePostController,
+);
+
 module.exports = postRouter;

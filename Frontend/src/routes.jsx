@@ -2,6 +2,7 @@ import { createBrowserRouter } from "react-router";
 import Landing from "./features/landing/pages/Landing";
 import Login from "./features/auth/pages/Login";
 import Register from "./features/auth/pages/Register";
+import FeedPage from "./features/posts/pages/FeedPage";
 
 export const routes = createBrowserRouter([
   {
@@ -15,5 +16,9 @@ export const routes = createBrowserRouter([
   {
     path: "/register",
     element: (<Register />),
+  },
+  {
+    path: "/feed",
+    element: (<FeedPage />),
   },
 ]);
