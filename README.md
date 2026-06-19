@@ -216,13 +216,11 @@ cd PixelFeed
 3. Create a `.env` file in the `Backend` directory:
    ```env
    MONGO_URI=mongodb+srv://username:password@cluster.mongodb.net/pixelfeed
-
-JWT_SECRET=your_super_secret_jwt_key
-
-FRONTEND_URL=http://localhost:5173
-IMAGEKIT_PUBLIC_KEY=public_xxxxxxxxxxxxxxxxx
-IMAGEKIT_PRIVATE_KEY=private_xxxxxxxxxxxxxxxxx
-IMAGEKIT_URL_ENDPOINT=https://ik.imagekit.io/your_imagekit_id
+   JWT_SECRET=your_super_secret_jwt_key
+   FRONTEND_URL=http://localhost:5173
+   IMAGEKIT_PUBLIC_KEY=public_xxxxxxxxxxxxxxxxx
+   IMAGEKIT_PRIVATE_KEY=private_xxxxxxxxxxxxxxxxx
+   IMAGEKIT_URL_ENDPOINT=https://ik.imagekit.io/your_imagekit_id
    ```
 4. Start the backend server in development mode:
    ```bash
