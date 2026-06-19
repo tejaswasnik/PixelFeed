@@ -60,14 +60,12 @@ async function getPostController(req, res) {
 async function likePostController(req, res) {
   const username = req.user.username;
   const postId = req.params.postId;
-
   const post = await postModel.findById(postId);
   if (!post) {
     return res.status(404).json({
       message: "Post not found.",
     });
   }
-
   const like = await likeModel.create({
     post: postId,
     username: username,
@@ -101,18 +99,34 @@ async function unlikePostController(req, res) {
 }
 
 async function getFeedController(req, res) {
-  const posts = await postModel.find().populate("user");
+  try {
+    const user = req.user;
 
-  if (!posts) {
-    res.status(404).json({
-      message: "Posts not found.",
+    const posts = await Promise.all(
+      (await postModel.find().populate("user")).map(async (post) => {
+        const isLiked = await likeModel.findOne({
+          username: user.username,
+          post: post._id,
+        });
+
+        const postObj = post.toObject();
+        postObj.isLiked = !!isLiked;
+
+        return postObj;
+      }),
+    );
+
+    res.status(200).json({
+      message: "Posts fetched successfully.",
+      posts,
+    });
+  } catch (error) {
+    console.error(error);
+
+    res.status(500).json({
+      message: "Internal server error",
     });
   }
-
-  res.status(200).json({
-    message: "Posts fetched successfully.",
-    posts,
-  });
 }
 
 module.exports = {
@@ -121,5 +135,5 @@ module.exports = {
   getPostController,
   likePostController,
   unlikePostController,
-  getFeedController
+  getFeedController,
 };

@@ -1,19 +1,37 @@
 import React, { useState } from "react";
 import "../style/Post.scss";
+import { likePost, unLikePost } from "../services/api.post";
 
 const Post = ({ user, post } = {}) => {
-  const [liked, setLiked] = useState(false);
+  const [liked, setLiked] = useState(post?.isLiked || false);
   const [showHeartOverlay, setShowHeartOverlay] = useState(false);
 
-  const handleLike = () => {
-    setLiked(!liked);
+  const handleLike = async () => {
+    try {
+      if (liked) {
+        await unLikePost(post._id);
+        setLiked(false);
+      } else {
+        await likePost(post._id);
+        setLiked(true);
+      }
+    } catch (err) {
+      throw err;
+    }
   };
 
-  const handleImageDoubleClick = () => {
+  const handleImageDoubleClick = async () => {
     if (!liked) {
-      setLiked(true);
+      try {
+        await likePost(post._id);
+        setLiked(true);
+      } catch (error) {
+        console.error(error);
+      }
     }
+
     setShowHeartOverlay(true);
+
     setTimeout(() => {
       setShowHeartOverlay(false);
     }, 800);
@@ -36,7 +54,12 @@ const Post = ({ user, post } = {}) => {
         className="post-image-container"
         onDoubleClick={handleImageDoubleClick}
       >
-        <img src={post.imgURL} alt="Post" className="post-image" loading="lazy" />
+        <img
+          src={post.imgURL}
+          alt="Post"
+          className="post-image"
+          loading="lazy"
+        />
         {showHeartOverlay && (
           <div className="post-heart-overlay">
             <svg

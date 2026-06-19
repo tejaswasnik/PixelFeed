@@ -1,0 +1,271 @@
+// ── Theme variables (matching Post.scss) ──
+$bg-card: #09090b;
+$fg-card: #fafafa;
+$border-card: #27272a;
+$text-muted: #71717a;
+$text-subtle: #e4e4e7;
+$rose-accent: #f43f5e;
+
+// ── Page layout ──
+.create-post-page {
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 2rem 1rem;
+  background-color: #0a0a0a;
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto,
+    Helvetica, Arial, sans-serif;
+}
+
+.create-post-container {
+  width: 100%;
+  max-width: 470px;
+}
+
+// ── Card (mirrors .post) ──
+.create-post-card {
+  display: flex;
+  flex-direction: column;
+  background-color: $bg-card;
+  color: $fg-card;
+  border: 1px solid $border-card;
+  border-radius: 12px;
+  overflow: hidden;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.25);
+  transition: border-color 0.2s ease, box-shadow 0.2s ease;
+
+  &:hover {
+    border-color: #3f3f46;
+    box-shadow: 0 6px 24px rgba(0, 0, 0, 0.35);
+  }
+}
+
+// ── Header ──
+.create-post-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 12px 14px;
+  border-bottom: 1px solid $border-card;
+
+  .create-post-user {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+  }
+
+  .create-post-user-image {
+    width: 32px;
+    height: 32px;
+    border-radius: 50%;
+    object-fit: cover;
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    background-color: #18181b;
+  }
+
+  .create-post-username {
+    font-size: 0.875rem;
+    font-weight: 600;
+    color: $fg-card;
+  }
+
+  .create-post-badge {
+    font-size: 0.7rem;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.06em;
+    color: $rose-accent;
+    background: rgba($rose-accent, 0.1);
+    padding: 4px 10px;
+    border-radius: 999px;
+  }
+}
+
+// ── Image area ──
+.create-post-image-area {
+  position: relative;
+  width: 100%;
+  aspect-ratio: 1 / 1;
+  background-color: #000;
+  overflow: hidden;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  border-bottom: 1px solid $border-card;
+  transition: background-color 0.25s ease;
+
+  &.dragging {
+    background-color: #111114;
+
+    .create-post-upload-prompt {
+      .upload-icon {
+        color: $rose-accent;
+        transform: scale(1.1);
+      }
+
+      .upload-main {
+        color: $fg-card;
+      }
+    }
+  }
+}
+
+// Upload prompt (empty state)
+.create-post-upload-prompt {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 12px;
+  padding: 2rem;
+  text-align: center;
+  user-select: none;
+
+  .upload-icon {
+    color: $text-muted;
+    transition: color 0.2s ease, transform 0.2s ease;
+  }
+
+  .upload-main {
+    font-size: 0.9rem;
+    font-weight: 500;
+    color: $text-subtle;
+    transition: color 0.2s ease;
+  }
+
+  .upload-sub {
+    font-size: 0.75rem;
+    color: $text-muted;
+  }
+}
+
+// Preview (image selected)
+.create-post-preview-wrapper {
+  position: relative;
+  width: 100%;
+  height: 100%;
+}
+
+.create-post-preview-img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  user-select: none;
+  -webkit-user-drag: none;
+}
+
+.create-post-clear-btn {
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  width: 30px;
+  height: 30px;
+  border-radius: 50%;
+  border: none;
+  background: rgba(0, 0, 0, 0.6);
+  backdrop-filter: blur(4px);
+  color: $fg-card;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  opacity: 0;
+  transition: opacity 0.2s ease, background 0.2s ease, transform 0.15s ease;
+  padding: 0;
+
+  &:hover {
+    background: rgba($rose-accent, 0.7);
+    transform: scale(1.1);
+  }
+
+  .create-post-preview-wrapper:hover & {
+    opacity: 1;
+  }
+}
+
+// ── Footer ──
+.create-post-footer {
+  display: flex;
+  flex-direction: column;
+  padding: 14px;
+  gap: 12px;
+}
+
+.create-post-caption {
+  width: 100%;
+  min-height: 64px;
+  max-height: 140px;
+  resize: vertical;
+  background: transparent;
+  border: 1px solid $border-card;
+  border-radius: 8px;
+  padding: 10px 12px;
+  font-size: 0.875rem;
+  line-height: 1.5;
+  color: $fg-card;
+  font-family: inherit;
+  outline: none;
+  transition: border-color 0.2s ease;
+  box-sizing: border-box;
+
+  &::placeholder {
+    color: $text-muted;
+  }
+
+  &:focus {
+    border-color: #52525b;
+  }
+}
+
+.create-post-error {
+  font-size: 0.8rem;
+  color: $rose-accent;
+  padding: 0 2px;
+}
+
+.create-post-actions {
+  display: flex;
+  gap: 10px;
+  justify-content: flex-end;
+}
+
+.create-post-btn {
+  font-family: inherit;
+  font-size: 0.85rem;
+  font-weight: 600;
+  padding: 8px 20px;
+  border-radius: 8px;
+  border: none;
+  cursor: pointer;
+  transition: background 0.2s ease, opacity 0.2s ease, transform 0.1s ease;
+
+  &:active {
+    transform: scale(0.96);
+  }
+
+  &:disabled {
+    opacity: 0.4;
+    cursor: not-allowed;
+  }
+
+  &.cancel {
+    background: transparent;
+    color: $text-muted;
+    border: 1px solid $border-card;
+
+    &:hover:not(:disabled) {
+      color: $fg-card;
+      border-color: #3f3f46;
+    }
+  }
+
+  &.submit {
+    background: $fg-card;
+    color: $bg-card;
+
+    &:hover:not(:disabled) {
+      background: $text-subtle;
+    }
+  }
+}
