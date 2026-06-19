@@ -13,7 +13,7 @@ const Login = () => {
     e.preventDefault();
     await handleLogin(email, password);
     console.log("user Logged In");
-    navigate("/");
+    navigate("/feed");
   };
 
   if(loading) {

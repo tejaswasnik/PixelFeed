@@ -34,7 +34,7 @@ const Register = () => {
       profilePicture,
     );
     console.log("user Registered.");
-    navigate("/");
+    navigate("/feed");
   }
   return (
     <main className="register-page">
