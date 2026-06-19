@@ -13,6 +13,7 @@ const Register = () => {
   const [bio, setBio] = useState("");
   const [profilePicture, setProfilePicture] = useState("");
   const [password, setPassword] = useState("");
+  const navigate = useNavigate();
   async function handleSubmit(e) {
     e.preventDefault();
     console.log({
