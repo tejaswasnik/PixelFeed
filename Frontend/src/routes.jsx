@@ -4,6 +4,7 @@ import Login from "./features/auth/pages/Login";
 import Register from "./features/auth/pages/Register";
 import FeedPage from "./features/posts/pages/FeedPage";
 import CreatePost from "./features/posts/pages/CreatePost";
+import ProfilePage from "./features/users/pages/profilePage";
 
 export const routes = createBrowserRouter([
   {
@@ -25,5 +26,9 @@ export const routes = createBrowserRouter([
   {
     path: "/create",
     element: (<CreatePost/>)
-  }
+  },
+  {
+    path: "/profile/:username",
+    element: (<ProfilePage />),
+  },
 ]);

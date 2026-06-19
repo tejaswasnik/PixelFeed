@@ -38,6 +38,8 @@ $rose-like: #f43f5e; // rose-500
       display: flex;
       align-items: center;
       gap: 10px;
+      text-decoration: none;
+      color: inherit;
 
       .post-user-image {
         width: 32px;

@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import { Link } from "react-router";
 import "../style/Post.scss";
 import { likePost, unLikePost } from "../services/api.post";
 
@@ -40,14 +41,14 @@ const Post = ({ user, post } = {}) => {
   return (
     <article className="post">
       <header className="post-header">
-        <div className="post-user">
+        <Link to={`/profile/${user.username}`} className="post-user">
           <img
             src={user.profilePicture}
             alt="User Profile"
             className="post-user-image"
           />
           <span className="post-username">{user.username}</span>
-        </div>
+        </Link>
       </header>
 
       <div

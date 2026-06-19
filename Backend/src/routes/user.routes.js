@@ -4,6 +4,16 @@ const authUser = require("../middlewares/auth.middleware");
 const userController = require("../controllers/user.controller");
 
 /**
+ * @route GET /api/user/profile/:username
+ * @description Get user profile with posts, follow counts
+ * @access Private
+ */
+userRouter.get(
+  "/profile/:username",
+  authUser,
+  userController.getProfileController,
+);
+/**
  * @route POST /api/users/follow/:userid
  * @description Follow a user
  * @access Private

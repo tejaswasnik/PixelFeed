@@ -5,7 +5,7 @@ import "../style/DitherBG.scss";
 import { useAuth } from "../hooks/useAuth";
 import { useNavigate } from "react-router";
 const Login = () => {
-  const { handleLogin , loading} = useAuth();
+  const { handleLogin, loading } = useAuth();
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const navigate = useNavigate();
@@ -16,7 +16,7 @@ const Login = () => {
     navigate("/feed");
   };
 
-  if(loading) {
+  if (loading) {
     return (<div>Loading...</div>);
   }
   return (

@@ -47,5 +47,5 @@ export function useAuth() {
     }
   }
 
-  return { user, loading, handleLogin, handleRegister, getMe };
+  return { user, setUser, loading, handleLogin, handleRegister, getMe };
 }

@@ -1,0 +1,157 @@
+// ── Theme variables (matching app-wide palette) ──
+$bg-navbar: #09090b;
+$fg-navbar: #fafafa;
+$border-navbar: #27272a;
+$text-muted: #71717a;
+$text-subtle: #e4e4e7;
+$rose-accent: #f43f5e;
+
+.app-navbar {
+  position: sticky;
+  top: 0;
+  z-index: 100;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0 1.5rem;
+  height: 56px;
+  background-color: rgba($bg-navbar, 0.85);
+  backdrop-filter: blur(16px) saturate(180%);
+  -webkit-backdrop-filter: blur(16px) saturate(180%);
+  border-bottom: 1px solid $border-navbar;
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto,
+    Helvetica, Arial, sans-serif;
+}
+
+// ── Brand ──
+.navbar-brand {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  text-decoration: none;
+  color: $fg-navbar;
+  transition: opacity 0.2s ease;
+
+  &:hover {
+    opacity: 0.85;
+  }
+
+  .brand-icon {
+    font-size: 1.3rem;
+    opacity: 0.9;
+  }
+
+  .brand-name {
+    font-size: 1.1rem;
+    font-weight: 700;
+    letter-spacing: -0.02em;
+  }
+}
+
+// ── Links ──
+.navbar-links {
+  display: flex;
+  align-items: center;
+  gap: 0.25rem;
+}
+
+.navbar-link {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding: 8px 14px;
+  border-radius: 8px;
+  text-decoration: none;
+  color: $text-muted;
+  font-size: 0.85rem;
+  font-weight: 500;
+  transition: all 0.2s ease;
+  position: relative;
+
+  svg {
+    flex-shrink: 0;
+    transition: transform 0.2s ease;
+  }
+
+  &:hover {
+    color: $fg-navbar;
+    background: rgba(255, 255, 255, 0.06);
+
+    svg {
+      transform: scale(1.08);
+    }
+  }
+
+  &:active {
+    transform: scale(0.96);
+  }
+
+  &.active {
+    color: $fg-navbar;
+    background: rgba(255, 255, 255, 0.08);
+
+    &::after {
+      content: "";
+      position: absolute;
+      bottom: -9px;
+      left: 50%;
+      transform: translateX(-50%);
+      width: 16px;
+      height: 2px;
+      background: $fg-navbar;
+      border-radius: 2px;
+    }
+  }
+}
+
+// ── Profile link avatar ──
+.profile-link {
+  .navbar-avatar {
+    width: 24px;
+    height: 24px;
+    border-radius: 50%;
+    object-fit: cover;
+    border: 1.5px solid $border-navbar;
+    transition: border-color 0.2s ease;
+  }
+
+  &:hover .navbar-avatar {
+    border-color: $text-muted;
+  }
+
+  &.active .navbar-avatar {
+    border-color: $fg-navbar;
+  }
+}
+
+// ── Logout button ──
+.logout-btn {
+  border: none;
+  background: none;
+  cursor: pointer;
+  font-family: inherit;
+
+  &:hover {
+    color: $rose-accent;
+    background: rgba($rose-accent, 0.08);
+  }
+}
+
+// ── Responsive ──
+@media (max-width: 640px) {
+  .app-navbar {
+    padding: 0 1rem;
+  }
+
+  .navbar-link span {
+    display: none;
+  }
+
+  .navbar-link {
+    padding: 8px 10px;
+  }
+
+  .brand-name {
+    display: none;
+  }
+}
