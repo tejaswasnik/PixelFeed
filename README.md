@@ -2,18 +2,6 @@
 
 A modern, production-grade, full-stack social media platform inspired by Instagram. PixelFeed enables users to seamlessly register accounts, manage profiles, upload images to a cloud CDN, interact with posts via likes, and follow or unfollow other users to customize their social experience.
 
-
-## Why This Project Matters
-
-PixelFeed is not just a CRUD application; it represents a production-quality full-stack engineering effort designed with scalability, security, and clean separation of concerns in mind. Key highlights of the software engineering expertise demonstrated in this codebase:
-
-*   **Secure Authentication Architecture**: Replaces vulnerable `localStorage` authentication patterns with secure, HTTP-only cookie-based JWT transmission. This mitigates Cross-Site Scripting (XSS) risks and keeps user credentials private.
-*   **Stateless Image Upload Pipeline**: Integrates `Multer` memory storage with the `ImageKit` Node.js SDK to pipe raw file buffers directly to a global CDN. This keeps the backend server stateless and prevents server disk bloat.
-*   **Optimized Aggregation & Feed Generation**: Leverages Mongoose populate queries and batch processing to build a personalized global feed, resolving user details and like states dynamically on the fly.
-*   **Database Constraints & Integrity**: Enforces compound database indices with strict unique constraints on Follows and Likes to prevent duplicate data insertion, ensuring integrity even in high-concurrency environments.
-
----
-
 ## Tech Stack
 
 PixelFeed is engineered using a robust modern stack split across a decoupled client-server architecture:
@@ -35,7 +23,6 @@ PixelFeed is engineered using a robust modern stack split across a decoupled cli
 
 *   **Authentication & Security**: Complete registration, login, and token validation flow. Passwords are securely hashed before storing, and sessions are persisted via secure browser cookies.
 *   **Stateless Media Uploads**: Fast, on-the-fly uploads of post images using memory buffering. No temporary files are stored on the server disk.
-*   ** Personalized Feed**: Dynamic, chronologically sorted feed of posts from across the platform, including post creator info and live user-like indicators.
 *   **Social Relationships**: Follow and unfollow users to adjust follower/following counts in real-time, managed cleanly through independent link models.
 *   **Live Interactions**: Single-tap like and unlike options with database-level uniqueness enforcement.
 *   **Comprehensive Profiles**: Dedicated user spaces listing user bios, gender metrics, total post counts, follower list sizes, and a visual grid of their uploaded posts.
@@ -247,41 +234,5 @@ cd PixelFeed
    npm run dev
    ```
 5. Open your browser and navigate to `http://localhost:5173` to explore PixelFeed!
-
----
-
-## Future Roadmap
-
-- [ ] **Comments System**: Allow users to write and view chronological comments on posts.
-- [ ] **Dynamic Search**: Real-time search bar on the navbar to find other users by username.
-- [ ] **Real-time Notifications**: Socket.io integration to alert users immediately when they receive likes or new followers.
-- [ ] **Dark Mode / Theme Customization**: HSL-based custom styling to toggle dark mode natively.
-
----
-
-## Visual Mockups
-
-*Since this is a portfolio-ready project, the visual design is crafted to be clean, modern, and fully responsive:*
-
-```text
-┌────────────────────────────────────────────────────────┐
-│  📸 PixelFeed                     🔍 Search    👤 Profile│
-├────────────────────────────────────────────────────────┤
-│                                                        │
-│   ┌──────────────────────┐      ┌────────────────────┐ │
-│   │ @jane_doe            │      │ @john_smith        │ │
-│   ├──────────────────────┤      ├────────────────────┤ │
-│   │                      │      │                    │ │
-│   │                      │      │                    │ │
-│   │       [IMAGE]        │      │       [IMAGE]      │ │
-│   │                      │      │                    │ │
-│   │                      │      │                    │ │
-│   ├──────────────────────┤      ├────────────────────┤ │
-│   │ ❤️ Like    💬 Comment │      │ ❤️ Like    💬 Comment│ │
-│   │ "Beautiful sunset!"  │      │ "Exploring SF!"    │ │
-│   └──────────────────────┘      └────────────────────┘ │
-│                                                        │
-└────────────────────────────────────────────────────────┘
-```
 
 ---
