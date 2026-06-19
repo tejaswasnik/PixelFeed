@@ -1,14 +1,9 @@
-# 📸 PixelFeed
+# PixelFeed
 
 A modern, production-grade, full-stack social media platform inspired by Instagram. PixelFeed enables users to seamlessly register accounts, manage profiles, upload images to a cloud CDN, interact with posts via likes, and follow or unfollow other users to customize their social experience.
 
----
 
-### 🌐 [Live Repository](https://github.com/tejaswasnik/PixelFeed)
-
----
-
-## 🚀 Why This Project Matters
+## Why This Project Matters
 
 PixelFeed is not just a CRUD application; it represents a production-quality full-stack engineering effort designed with scalability, security, and clean separation of concerns in mind. Key highlights of the software engineering expertise demonstrated in this codebase:
 
@@ -19,7 +14,7 @@ PixelFeed is not just a CRUD application; it represents a production-quality ful
 
 ---
 
-## 🛠️ Tech Stack
+## Tech Stack
 
 PixelFeed is engineered using a robust modern stack split across a decoupled client-server architecture:
 
@@ -36,18 +31,18 @@ PixelFeed is engineered using a robust modern stack split across a decoupled cli
 
 ---
 
-## 🌟 Key Features
+## Key Features
 
-*   **🔐 Authentication & Security**: Complete registration, login, and token validation flow. Passwords are securely hashed before storing, and sessions are persisted via secure browser cookies.
-*   **📷 Stateless Media Uploads**: Fast, on-the-fly uploads of post images using memory buffering. No temporary files are stored on the server disk.
-*   **📰 Personalized Feed**: Dynamic, chronologically sorted feed of posts from across the platform, including post creator info and live user-like indicators.
-*   **👥 Social Relationships**: Follow and unfollow users to adjust follower/following counts in real-time, managed cleanly through independent link models.
-*   **❤️ Live Interactions**: Single-tap like and unlike options with database-level uniqueness enforcement.
-*   **👤 Comprehensive Profiles**: Dedicated user spaces listing user bios, gender metrics, total post counts, follower list sizes, and a visual grid of their uploaded posts.
+*   **Authentication & Security**: Complete registration, login, and token validation flow. Passwords are securely hashed before storing, and sessions are persisted via secure browser cookies.
+*   **Stateless Media Uploads**: Fast, on-the-fly uploads of post images using memory buffering. No temporary files are stored on the server disk.
+*   ** Personalized Feed**: Dynamic, chronologically sorted feed of posts from across the platform, including post creator info and live user-like indicators.
+*   **Social Relationships**: Follow and unfollow users to adjust follower/following counts in real-time, managed cleanly through independent link models.
+*   **Live Interactions**: Single-tap like and unlike options with database-level uniqueness enforcement.
+*   **Comprehensive Profiles**: Dedicated user spaces listing user bios, gender metrics, total post counts, follower list sizes, and a visual grid of their uploaded posts.
 
 ---
 
-## 📁 Project Architecture & Folder Structure
+## Project Architecture & Folder Structure
 
 PixelFeed follows a clean directory separation, organizing the client (`Frontend`) and API (`Backend`) separately to make deployment and updates independent.
 
@@ -94,7 +89,7 @@ PixelFeed/
 
 ---
 
-## 🔗 API Overview
+## API Overview
 
 All routes except `/api/auth/register` and `/api/auth/login` require a valid JWT token passed automatically in the request cookies.
 
@@ -127,7 +122,7 @@ All routes except `/api/auth/register` and `/api/auth/login` require a valid JWT
 
 ---
 
-## 🗄️ Database Schema Design
+## Database Schema Design
 
 PixelFeed uses structured Mongoose schemas to establish data models in MongoDB.
 
@@ -174,7 +169,7 @@ PixelFeed uses structured Mongoose schemas to establish data models in MongoDB.
 
 ---
 
-## 🧠 Technical Challenges & Engineering Solutions
+## Technical Challenges & Engineering Solutions
 
 ### 1. XSS Vulnerability Prevention (Secure JWTs)
 *   **The Challenge**: Traditional SPA storage (like storing JWT in `localStorage` or `sessionStorage`) is vulnerable to Cross-Site Scripting (XSS) scripts accessing tokens and hijacking user sessions.
@@ -193,7 +188,7 @@ PixelFeed uses structured Mongoose schemas to establish data models in MongoDB.
 
 ---
 
-## 💻 Installation & Setup
+## Installation & Setup
 
 Follow these steps to set up and run PixelFeed locally:
 
@@ -257,7 +252,7 @@ IMAGEKIT_URL_ENDPOINT=https://ik.imagekit.io/your_imagekit_id
 
 ---
 
-## 🗺️ Future Roadmap
+## Future Roadmap
 
 - [ ] **Comments System**: Allow users to write and view chronological comments on posts.
 - [ ] **Dynamic Search**: Real-time search bar on the navbar to find other users by username.
@@ -266,7 +261,7 @@ IMAGEKIT_URL_ENDPOINT=https://ik.imagekit.io/your_imagekit_id
 
 ---
 
-## 🎨 Visual Mockups
+## Visual Mockups
 
 *Since this is a portfolio-ready project, the visual design is crafted to be clean, modern, and fully responsive:*
 
@@ -292,26 +287,3 @@ IMAGEKIT_URL_ENDPOINT=https://ik.imagekit.io/your_imagekit_id
 ```
 
 ---
-
-## 🤝 Contributing
-
-Contributions are welcome! Please follow these guidelines to propose changes:
-
-1. Fork the Project.
-2. Create a Feature Branch (`git checkout -b feature/AmazingFeature`).
-3. Commit your Changes (`git commit -m 'Add some AmazingFeature'`).
-4. Push to the Branch (`git push origin feature/AmazingFeature`).
-5. Open a Pull Request.
-
----
-
-## 📄 License
-
-Distributed under the MIT License. See [LICENSE](file:///home/tejas/Desktop/Coding/PixelFeed/LICENSE) for more information.
-
----
-
-## 👤 Author
-
-*   **Tejas Wasnik** - [@tejaswasnik](https://github.com/tejaswasnik)
-*   **Project Link**: [https://github.com/tejaswasnik/PixelFeed](https://github.com/tejaswasnik/PixelFeed)
